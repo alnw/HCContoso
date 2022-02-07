@@ -1,0 +1,7 @@
+{
+  "KeyVault": {
+    "SecretName": {
+      "DefaultClientSecret": "upkeep-apim-clientsecret"
+    }
+  }
+}
