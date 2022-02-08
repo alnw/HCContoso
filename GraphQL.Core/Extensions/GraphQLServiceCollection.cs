@@ -28,13 +28,15 @@ namespace GQL.Extensions
                 throw new ArgumentException($"configuration is missing");
             }
 
+            // eg:  "Server=(localdb)\\mssqllocaldb;Database=CompanyDB"
+            var dbConnString = configuration["DataSource:DbConnectionString"];
             var builder = new GraphQLServerBuilder(configuration, services);
             services.AddPooledDbContextFactory<ApplicationDbContext>(
                 (s, b) =>
                 {
                     var connection = new SqlConnection
                     {
-                        ConnectionString = "Server=(localdb)\\mssqllocaldb;Database=CompanyDB",
+                        ConnectionString = dbConnString
                     };
 
                     b.UseSqlServer(connection, options => options.EnableRetryOnFailure(5, TimeSpan.FromSeconds(5), new List<int>()))

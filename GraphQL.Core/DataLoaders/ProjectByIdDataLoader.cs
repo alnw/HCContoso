@@ -30,7 +30,6 @@ namespace GQL.DataLoaders
         {
             await using ApplicationDbContext dbContext = 
                 _dbContextFactory.CreateDbContext();
-
             var results = new List<ProjectData>();
             await dbContext.ProjectStates.Include(x => x.Project)
                 .Where(s => keys.Contains(s.Id))

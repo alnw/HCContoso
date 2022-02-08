@@ -8,12 +8,23 @@
    - dotnet ef database update
 
 ## Run Project
-1. Open Solution HCContoso\GraphQL.Serverless\GraphQL.Serverless.sln
-2. Open file Extensions\GraphQLServiceCollection.cs and update the connection string
+1. Open Solution HCContoso\GraphQL.Serverless.sln
+2. Create a file called "local.settings.json"
+3. Put database connection string
+
+    ```
+    {
+      "IsEncrypted": false,
+      "DataSource": {
+        "DbConnectionString": "Server=(localdb)\\mssqllocaldb;Database=CompanyDB"
+      }
+    }
+    ```
     - For local DB
       - Server=(localdb)\\mssqllocaldb;Database=[database-name]
     - For DB Server
       - Server=tcp:[server-name],1433;Initial Catalog=[database-name];Persist Security Info=False;User ID=[your-username];Password=[your-password];MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+
 
 ## Known Issue
 ### Query involves 2 resolvers have issue:
